@@ -1,35 +1,39 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import ProductCard from '../component/ProductCard';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const ProductAll = () => {
 
-    const [productList, setProductList] = useState([]);
+    // const [productList, setProductList] = useState([]);
 
-    const getProducts = async () => {
-        let url = 'http://localhost:5000/products';
-        let response = await fetch(url);
-        let data = await response.json();
-        setProductList(data);
-    }
+    // const getProducts = async () => {
+    //     let url = 'http://localhost:5000/products';
+    //     let response = await fetch(url);
+    //     let data = await response.json();
+    //     setProductList(data);
+    // }
 
-    useEffect(() => {
-        getProducts()
-    }, [])
+    // useEffect(() => {
+    //     getProducts()
+    // }, [])
 
 
     return (
         <div>
             <Container>
-                <Row>
+                {/* <Row>
                     {productList.map((menu) => (
                         <Col className="product-card" lg={3}>
                             <ProductCard item={menu} />
                         </Col>
                     ))}
+                </Row> */}
+                <Row>
+                        <Col className="product-card" lg={3}>
+                            <ProductCard/>
+                        </Col>
                 </Row>
             </Container>
-            <ProductCard />
         </div>
     )
 }

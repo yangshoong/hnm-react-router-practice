@@ -16,19 +16,21 @@
 
 .menu-list li {
     padding: 10px;
+    display: flex;
+        justify-content: center;
+    align-items: center;
 }
 
 .menu-area {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
 }
 
 .search-area {
     display: flex;
     justify-content: flex-end;
-    height: 35px;
+    align-items: center;
 }
 
 .product-card {
