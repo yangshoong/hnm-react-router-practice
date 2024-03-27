@@ -4,7 +4,7 @@
     margin: 20px;
 }
 
-.nav-section {
+.nav-logo {
     display: flex;
     justify-content: center;
 }
@@ -16,15 +16,25 @@
 
 .menu-list li {
     padding: 10px;
-
 }
 
 .menu-area {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
 }
 
-.search-area{
-    display:flex;
-    justify-content: end;
+.search-area {
+    display: flex;
+    justify-content: flex-end;
+    height: 35px;
+}
+
+.product-card {
+    width: 100px;
+}
+
+.space{
+    width:180px;
 }
