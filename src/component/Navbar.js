@@ -4,7 +4,6 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { MDBInputGroup, MDBInput, MDBIcon, MDBBtn } from 'mdb-react-ui-kit'
 
 const Navbar = () => {
     const menuList = [
