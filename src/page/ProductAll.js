@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../component/ProductCard';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const ProductAll = () => {
 
     const [productList, setProductList] = useState([]);
+    const navigate = useNavigate();
+
 
     const getProducts = async () => {
         let url = 'http://localhost:5000/products';
@@ -22,17 +25,12 @@ const ProductAll = () => {
         <div>
             <Container>
                 <Row>
-                    {productList.map((menu) => (
+                    {productList.map((product) => (
                         <Col className="product-card" lg={3}>
-                            <ProductCard item={menu} />
+                            <ProductCard item={product}/>
                         </Col>
                     ))}
                 </Row>
-                {/* <Row>
-                        <Col className="product-card" lg={3}>
-                            <ProductCard/>
-                        </Col>
-                </Row> */}
             </Container>
         </div>
     )
