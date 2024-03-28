@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../component/ProductCard';
 import { Container, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const ProductAll = () => {
 
     const [productList, setProductList] = useState([]);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
 
     const getProducts = async () => {
