@@ -10,7 +10,7 @@ const ProductAll = () => {
 
 
     const getProducts = async () => {
-        let url = 'http://my-json-server.typicode.com/yangshoong/hnm-react-router-practice/products';
+        let url = 'https://my-json-server.typicode.com/yangshoong/hnm-react-router-practice/products';
         let response = await fetch(url);
         let data = await response.json();
         setProductList(data);
