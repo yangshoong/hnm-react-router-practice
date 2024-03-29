@@ -14,8 +14,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-
 }
 
 .menu-list li {
@@ -46,12 +44,15 @@
 
 .product-card {
     width: 100px;
+    margin-bottom: 50px;
+    
 }
 
 
 .card {
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
+
 }
 
 .card:hover {
@@ -71,4 +72,9 @@
 
 .search-icon{
     margin-right: 10px;
+}
+
+.product-img{
+    display: flex;
+    justify-content: flex-end;
 }

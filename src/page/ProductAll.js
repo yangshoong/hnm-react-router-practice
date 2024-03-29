@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../component/ProductCard';
 import { Container, Row, Col } from 'react-bootstrap';
-// import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const ProductAll = () => {
 
     const [productList, setProductList] = useState([]);
-    // const navigate = useNavigate();
+    const [query, setQuery] = useSearchParams();
 
 
     const getProducts = async () => {
-        let url = 'https://my-json-server.typicode.com/yangshoong/hnm-react-router-practice/products';
+        let searchQuery = query.get('q')||"";
+        let url = `https://my-json-server.typicode.com/yangshoong/hnm-react-router-practice/products?q=${searchQuery}`;
         let response = await fetch(url);
         let data = await response.json();
         setProductList(data);
@@ -18,7 +19,7 @@ const ProductAll = () => {
 
     useEffect(() => {
         getProducts()
-    }, [])
+    }, [query])
 
 
     return (
@@ -27,7 +28,7 @@ const ProductAll = () => {
                 <Row>
                     {productList.map((product) => (
                         <Col className="product-card" lg={3}>
-                            <ProductCard item={product}/>
+                            <ProductCard item={product} />
                         </Col>
                     ))}
                 </Row>
