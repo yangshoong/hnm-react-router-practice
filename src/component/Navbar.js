@@ -5,8 +5,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-
-const Navbar = () => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
     const menuList = [
         '여성',
         'Divided',
@@ -24,22 +23,46 @@ const Navbar = () => {
     };
 
     const search = (event) => {
-        if(event.key === "Enter"){
+        if (event.key === "Enter") {
             let keyword = event.target.value;
             navigate(`/?q=${keyword}`);
         }
+    };
 
+
+    const goToHome = () => {
+        navigate('/');
+    };
+
+    const getLoginStatus = (authenticate) => {
+        if (authenticate === true) {
+            return "로그아웃";
+        } else {
+            return "로그인";
+        }
+    };
+
+    const handleLoginClick = () => {
+        if (authenticate) {
+            setAuthenticate(false);
+        } else {
+            goToLogin();
+        }
     };
 
     return (
         <div>
-            <div className="login-button" onClick={goToLogin}>
+            <div className="login-button" onClick={handleLoginClick}>
                 <FontAwesomeIcon icon={faUser} />
-                <div>로그인</div>
+                <div>{getLoginStatus(authenticate)}</div>
             </div>
 
-            <div className="nav-logo">
-                <img width={100} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/709px-H%26M-Logo.svg.png" alt="H&M" />
+            <div className="nav-logo" onClick={goToHome}>
+                <img
+                    width={100}
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/709px-H%26M-Logo.svg.png"
+                    alt="H&M"
+                />
             </div>
 
             <div className="menu-area">
@@ -59,7 +82,6 @@ const Navbar = () => {
                         <Col md={3} className="search-area">
                             <FontAwesomeIcon icon={faSearch} className="search-icon" />
                             <input type="text" placeholder="제품 검색" className="search-input" onKeyPress={search} />
-
                         </Col>
                     </Row>
                 </Container>
