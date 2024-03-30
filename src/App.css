@@ -1,13 +1,19 @@
 .login-button {
     display: flex;
     justify-content: flex-end;
-    margin: 20px;
+    align-items: center;
+    margin: 50px;
     cursor: pointer;
+}
+
+.login-button .svg-inline--fa {
+    margin-right: 8px;
 }
 
 .nav-logo {
     display: flex;
     justify-content: center;
+    margin: 20px;
 }
 
 .menu-list {
@@ -34,6 +40,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin : 20px;
 }
 
 .search-area {
@@ -45,14 +52,14 @@
 .product-card {
     width: 100px;
     margin-bottom: 50px;
-    
+    border: none;
 }
 
 
 .card {
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     cursor: pointer;
-
+    border: none;
 }
 
 .card:hover {
@@ -70,11 +77,43 @@
     border-bottom: 2px solid #555;
 }
 
-.search-icon{
+.search-icon {
     margin-right: 10px;
 }
 
-.product-img{
+.product-img {
     display: flex;
     justify-content: flex-end;
+}
+
+
+/* 상품 이미지, 제목, 가격 등 각 섹션에 적용할 스타일 */
+.product-section {
+    margin-bottom: 1.5rem;
+    /* 원하는 간격으로 조절 */
+}
+
+/* 제품 이미지 컨테이너 스타일 */
+.product-img {
+    /* 기존 스타일을 유지하면서 margin-bottom 추가 */
+    margin-bottom: 1.5rem;
+    /* 하단 간격 추가 */
+}
+
+/* 가격과 제품명 등을 담는 컨테이너 스타일 */
+.product-info {
+    margin-bottom: 1.5rem;
+    /* 하단 간격 추가 */
+}
+
+/* 사이즈 선택 드롭다운 스타일 */
+.product-size-selector {
+    margin-bottom: 1.5rem;
+    /* 하단 간격 추가 */
+}
+
+/* '구매' 버튼 컨테이너 스타일 */
+.product-buy-button {
+    margin-bottom: 1.5rem;
+    /* 하단 간격 추가, 필요한 경우 더 늘리거나 줄일 수 있음 */
 }
