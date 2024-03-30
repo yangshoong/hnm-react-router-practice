@@ -24,7 +24,6 @@ const ProductDetail = () => {
 
     useEffect(() => {
         getProductDetail();
-
     }, [id]);
 
     if (loading) {
@@ -49,23 +48,29 @@ const ProductDetail = () => {
                 </Col>
                 <Col>
                     <div className="product-info">
-                        <div>{product?.new === true ? "신제품" : ""}</div>
-                        <div>{product?.choice === true ? "Conscious choice" : ""}</div>
-                        <div>{product?.title}</div>
-                        <div>{product?.price}</div>
+                        <div className="product-choice">{product?.choice === true ? "Conscious Choice" : ""}</div>
+                        <div className="product-new">{product?.new === true ? "New" : ""}</div>
                     </div>
-                    <div className="product-size-selector">
-                        <Form.Select aria-label="Default select example">
+                    <div className="product-detail">
+                        <div className="product-title">{product?.title}</div>
+                        <div>{product?.price.toLocaleString('ko-KR')} 원</div>
+                    </div>
+                    <div>
+                        <Form.Select className="product-size">
+                            
                             <option>Size</option>
                             <option value="1">S</option>
                             <option value="2">M</option>
                             <option value="3">L</option>
+                            <ul className="menu-list">
+                               
+                            </ul>
                         </Form.Select>
                     </div>
                     <div className="product-buy-button">
                         <div className="d-grid gap-2">
                             <Button variant="primary" size="lg">
-                                Choice
+                                구매
                             </Button>
                         </div>
                     </div>

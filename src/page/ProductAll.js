@@ -9,7 +9,6 @@ const ProductAll = () => {
     const [query, setQuery] = useSearchParams();
     const [loading, setLoading] = useState(false);
 
-
     const getProducts = async () => {
         setLoading(true);
         try {
@@ -26,9 +25,8 @@ const ProductAll = () => {
     };
 
     useEffect(() => {
-        getProducts()
-    }, [query])
-
+        getProducts();
+    }, [query]);
 
     return (
         <div>
@@ -42,16 +40,15 @@ const ProductAll = () => {
                         </Col>
                     ) : (
                         productList.map((product) => (
-                            <Col className="product-card" lg={3}>
+                            <Col lg={3} md={6} sm={12} className="product-card" key={product.id}>
                                 <ProductCard item={product} />
                             </Col>
                         ))
                     )}
-
                 </Row>
             </Container>
         </div>
-    )
-}
+    );
+};
 
-export default ProductAll
+export default ProductAll;

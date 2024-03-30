@@ -9,11 +9,14 @@ const ProductCard = ({ item }) => {
   };
   return (
     <div className="card" onClick={showDetail}>
-      <img src={item?.img} alt="" width={300} />
-      <div>{item?.choice === true ? "Conscious choice" : ""}</div>
-      <div>{item?.title}</div>
-      <div>{item?.price}</div>
-      <div>{item?.new === true ? "신제품" : ""}</div>
+      <img src={item?.img} alt="" width="100%" className="product-image" />
+      <div>
+        <span className="product-choice">{item?.choice === true ? "Conscious Choice" : ""}</span>
+        <span className="product-new">{item?.new === true ? "New" : ""}</span>
+      </div>
+      <div className="product-title">{item?.title}</div>
+      <div className="product-price">{item?.price.toLocaleString('ko-KR')} 원</div>
+
     </div>
   )
 }

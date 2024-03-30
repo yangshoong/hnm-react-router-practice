@@ -71,7 +71,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
                         <Col md={3} className="nav-space">
                         </Col>
 
-                        <Col md={6} className="menu-list">
+                        <Col md={6}>
                             <ul className="menu-list">
                                 {menuList.map((menu, index) => (
                                     <li key={index}>{menu}</li>
