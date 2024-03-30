@@ -24,6 +24,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 @media (max-width: 991px) {
@@ -98,7 +99,9 @@
 }
 
 @media (max-width: 768px) {
-    .product-detail, .product-info {
+
+    .product-detail,
+    .product-info {
         text-align: center;
     }
 }
@@ -114,22 +117,17 @@
 
 .product-choice {
     color: skyblue;
-    margin-left: 10px;
 }
 
 .product-new {
     color: orangered;
-    margin-left: 10px;
 }
 
 .product-title {
     font-size: larger;
-    margin-left: 10px;
 }
 
-.product-price {
-    margin-left: 10px;
-}
+.product-price {}
 
 .product-size {
     width: 500px;
@@ -139,4 +137,35 @@
 .card .product-image {
     max-width: 100%;
     height: auto;
+}
+
+.hamberger {
+    display: none;
+}
+
+.hamberger:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 991px) {
+    .hamberger {
+        display: block;
+        margin-left: 50px;
+    }
+}
+
+.hamberger-menu-list {
+    cursor: pointer;
+}
+.hamberger-menu-list li {
+    padding: 10px;
+    margin-left: 10px;
+    align-items: center;
+    list-style-type: none;
+}
+
+@media (min-width: 992px) {
+    .hamberger-menu-list {
+        display: none;
+    }
 }

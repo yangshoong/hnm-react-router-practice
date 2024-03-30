@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSearch, faHamburger } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
+    const [isHambergerMenuOpen, setIsHambergerMenuOpen] = useState(false);
+    const navigate = useNavigate();
+
     const menuList = [
         '여성',
         'Divided',
@@ -16,7 +18,6 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         'Sale',
         '지속가능성'
     ];
-    const navigate = useNavigate();
 
     const goToLogin = () => {
         navigate('/login');
@@ -50,6 +51,11 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         }
     };
 
+    const toggleMenu = () => {
+        setIsHambergerMenuOpen(!isHambergerMenuOpen);
+    };
+
+
     return (
         <div>
             <div className="login-button" onClick={handleLoginClick}>
@@ -64,8 +70,18 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
                     alt="H&M"
                 />
             </div>
-
+            <div>
+                <FontAwesomeIcon icon={faHamburger} className="hamberger" onClick={toggleMenu} />
+                {isHambergerMenuOpen && (
+                    <ul className="hamberger-menu-list">
+                        {menuList.map((menu, index) => (
+                            <li key={index}>{menu}</li>
+                        ))}
+                    </ul>
+                )}
+            </div>
             <div className="menu-area">
+               
                 <Container>
                     <Row>
                         <Col md={3} className="nav-space">
