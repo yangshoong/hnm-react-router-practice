@@ -1,44 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { productAction } from '../redux/actions/productAction';
 
 
 const ProductDetail = () => {
     let { id } = useParams();
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const product = useSelector((state) => state.product.selectedItem);
+    const dispatch = useDispatch();
 
     const getProductDetail = async () => {
-        setLoading(true);
         try {
-            let url = `https://my-json-server.typicode.com/yangshoong/hnm-react-router-practice/products/${id}`;
-            let response = await fetch(url);
-            let data = await response.json();
-            setProduct(data);
+            dispatch(productAction.getProductDetail(id));
         } catch (error) {
             console.error("Failed to fetch product details:", error);
         } finally {
-            setLoading(false);
         }
     };
 
     useEffect(() => {
         getProductDetail();
     }, [id]);
-
-    if (loading) {
-        return (
-            <Container>
-                <Row>
-                    <Col className="text-center">
-                        <Spinner animation="border" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </Spinner>
-                    </Col>
-                </Row>
-            </Container>
-        );
-    }
 
     return (
         <Container>

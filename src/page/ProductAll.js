@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react';
 import ProductCard from '../component/ProductCard';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
+import{productAction} from "../redux/actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductAll = () => {
 
-    const [productList, setProductList] = useState([]);
+    const productList = useSelector(state=>state.product.productList)
     const [query, setQuery] = useSearchParams();
+    const dispatch = useDispatch()
     const [loading, setLoading] = useState(false);
 
-    const getProducts = async () => {
+    const getProducts = () => {
         setLoading(true);
         try {
             let searchQuery = query.get('q') || "";
-            let url = `https://my-json-server.typicode.com/yangshoong/hnm-react-router-practice/products?q=${searchQuery}`;
-            let response = await fetch(url);
-            let data = await response.json();
-            setProductList(data);
+            dispatch(productAction.getProducts(searchQuery))
         } catch (error) {
             console.error("Failed to fetch products:", error);
         } finally {
