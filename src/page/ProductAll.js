@@ -2,29 +2,31 @@ import React, { useEffect, useState } from 'react';
 import ProductCard from '../component/ProductCard';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
-import{productAction} from "../redux/actions/productAction";
+// import{productAction} from "../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from '../redux/reducers/productSlice';
 
 const ProductAll = () => {
 
     const productList = useSelector(state=>state.product.productList)
-    const [query, setQuery] = useSearchParams();
+    const [query] = useSearchParams();
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false);
 
-    const getProducts = () => {
-        setLoading(true);
-        try {
-            let searchQuery = query.get('q') || "";
-            dispatch(productAction.getProducts(searchQuery))
-        } catch (error) {
-            console.error("Failed to fetch products:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    
 
     useEffect(() => {
+        const getProducts = () => {
+            setLoading(true);
+            try {
+                let searchQuery = query.get('q') || "";
+                dispatch(fetchProducts(searchQuery))
+            } catch (error) {
+                console.error("Failed to fetch products:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
         getProducts();
     }, [query]);
 

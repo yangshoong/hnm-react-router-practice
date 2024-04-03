@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap';
+import React, {useEffect } from 'react'
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { productAction } from '../redux/actions/productAction';
@@ -21,7 +21,7 @@ const ProductDetail = () => {
 
     useEffect(() => {
         getProductDetail();
-    }, [id]);
+    }, [id, getProductDetail ]);
 
     return (
         <Container>

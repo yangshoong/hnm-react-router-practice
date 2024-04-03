@@ -1,14 +1,15 @@
+// import { productActions } from "../reducers/productSlice";
 
+// function getProducts(searchQuery) {
+//   return async (dispatch, getState) => {
+//     let url = `https://my-json-server.typicode.com/yangshoong/hnm-react-router-practice/products?q=${searchQuery}`;
+//     let response = await fetch(url);
+//     let data = await response.json();
+//     // dispatch({type:"GET_PRODUCT_SUCCESS", payload:{data}});
+//     dispatch(productActions.getAllProducts({ data }));
+//   }
 
-function getProducts(searchQuery) {
-  return async (dispatch, getState) => {
-    let url = `https://my-json-server.typicode.com/yangshoong/hnm-react-router-practice/products?q=${searchQuery}`;
-    let response = await fetch(url);
-    let data = await response.json();
-    dispatch({type:"GET_PRODUCT_SUCCESS", payload:{data}});
-  }
-
-}
+// }
 
 function getProductDetail(id) {
   return async (dispatch) => {
@@ -19,4 +20,4 @@ function getProductDetail(id) {
   };
 }
 
-export const productAction = { getProducts, getProductDetail }
+export const productAction = { getProductDetail }
