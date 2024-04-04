@@ -20,7 +20,7 @@ export const fetchProducts = createAsyncThunk('product/fetchAll', async (searchQ
 
 export const fetchProductDetail = createAsyncThunk('productDetail/fetch', async (id, thunkApi) => {
   try {
-    let url = `https://my-json-server.typicode.com/legobitna/noona-hnm/products/${id}`;
+    let url = `https://my-json-server.typicode.com/yangshoong/hnm-react-router-practice/products/${id}`;
     let response = await fetch(url);
     return await response.json();
   } catch (error) {
