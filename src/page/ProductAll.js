@@ -1,40 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ProductCard from '../component/ProductCard';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 // import{productAction} from "../redux/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from '../redux/reducers/productSlice';
+import { fetchProducts } from '../redux/Slices/productSlice';
 
 const ProductAll = () => {
 
     const productList = useSelector(state=>state.product.productList)
     const [query] = useSearchParams();
     const dispatch = useDispatch()
-    const [loading, setLoading] = useState(false);
+    const isLoading = useSelector(state => state.product.isLoading);
 
     
 
     useEffect(() => {
-        const getProducts = () => {
-            setLoading(true);
-            try {
-                let searchQuery = query.get('q') || "";
-                dispatch(fetchProducts(searchQuery))
-            } catch (error) {
-                console.error("Failed to fetch products:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        getProducts();
-    }, [query]);
+        let searchQuery = query.get('q') || "";
+        dispatch(fetchProducts(searchQuery));
+    }, [query, dispatch]);
 
     return (
         <div>
             <Container>
                 <Row>
-                    {loading ? (
+                    {isLoading ? (
                         <Col className="text-center">
                             <Spinner animation="border" role="status">
                                 <span className="visually-hidden">Loading...</span>

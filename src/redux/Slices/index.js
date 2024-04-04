@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import authenticateReducer from "./authenticateReducer";
+import authenticateReducer from "./authenticateSlice";
 import productReducer from "./productSlice";
 
 

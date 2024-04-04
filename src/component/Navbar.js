@@ -3,21 +3,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSearch, faHamburger } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../redux/Slices/authenticateSlice';
 
-const Navbar = ({ authenticate, setAuthenticate }) => {
+const menuList = [
+    '여성',
+    'Divided',
+    '남성',
+    '신생아/유아',
+    '아동',
+    'H&M Home',
+    'Sale',
+    '지속가능성'
+];
+
+const Navbar = () => {
     const [isHambergerMenuOpen, setIsHambergerMenuOpen] = useState(false);
     const navigate = useNavigate();
-
-    const menuList = [
-        '여성',
-        'Divided',
-        '남성',
-        '신생아/유아',
-        '아동',
-        'H&M Home',
-        'Sale',
-        '지속가능성'
-    ];
+    const dispatch = useDispatch();
+    const authenticate = useSelector((state) => state.auth.authenticate);
 
     const goToLogin = () => {
         navigate('/login');
@@ -30,22 +34,17 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         }
     };
 
-
     const goToHome = () => {
         navigate('/');
     };
 
-    const getLoginStatus = (authenticate) => {
-        if (authenticate === true) {
-            return "로그아웃";
-        } else {
-            return "로그인";
-        }
+    const getLoginStatus = () => {
+        return authenticate ? "로그아웃" : "로그인";
     };
 
     const handleLoginClick = () => {
         if (authenticate) {
-            setAuthenticate(false);
+            dispatch(logout());
         } else {
             goToLogin();
         }
@@ -60,7 +59,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         <div>
             <div className="login-button" onClick={handleLoginClick}>
                 <FontAwesomeIcon icon={faUser} />
-                <div>{getLoginStatus(authenticate)}</div>
+                <div>{getLoginStatus()}</div>
             </div>
 
             <div className="nav-logo" onClick={goToHome}>

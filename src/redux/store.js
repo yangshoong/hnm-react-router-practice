@@ -2,8 +2,8 @@
 // import { composeWithDevTools } from '@redux-devtools/extension';
 // import { thunk } from "redux-thunk";
 // import rootReducer from "./reducers"
-import authenticateReducer from './reducers/authenticateReducer';
-import productReducer from "./reducers/productSlice";
+import authenticateReducer from './Slices/authenticateSlice';
+import productReducer from "./Slices/productSlice";
 
 import { configureStore } from '@reduxjs/toolkit';
 // import { configure } from "@testing-library/react";

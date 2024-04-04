@@ -14,12 +14,19 @@ export const fetchProducts = createAsyncThunk('product/fetchAll', async (searchQ
     let response = await fetch(url);
     return await response.json();
   } catch (error) {
-    thunkApi.rejectWithValue(error.message)
-
+    return thunkApi.rejectWithValue(error.message)
   }
-
-
 })
+
+export const fetchProductDetail = createAsyncThunk('productDetail/fetch', async (id, thunkApi) => {
+  try {
+    let url = `https://my-json-server.typicode.com/legobitna/noona-hnm/products/${id}`;
+    let response = await fetch(url);
+    return await response.json();
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message)
+  }
+});
 
 // function productReducer(state = initialState, action) {
 //   let { type, payload } = action;
@@ -38,9 +45,8 @@ const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-    getSingleProduct(state, action) {
-      state.selectedItem = action.payload.data;
-    },
+
+
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
@@ -52,6 +58,18 @@ const productSlice = createSlice({
         state.productList = action.payload
       })
       .addCase(fetchProducts.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload;
+      })
+      .addCase(fetchProductDetail.pending, (state) => {
+        state.isLoading = true
+
+      })
+      .addCase(fetchProductDetail.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.selectedItem = action.payload
+      })
+      .addCase(fetchProductDetail.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload;
       })

@@ -4,17 +4,20 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { authenticateAction } from "../redux/actions/authenticateAction";
+// import { authenticateAction } from "../redux/actions/authenticateAction";
+import { login } from '../redux/Slices/authenticateSlice';
 
-function Login({ setAuthenticate }) {
+const Login = ()=> {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
     const [id,setID]=useState('');
     const [password, setPassword] = useState('');
-
-    const navigate = useNavigate();
-    const dispatch = useDispatch()
+    
     const loginUser = (event) => {
         event.preventDefault();
-        dispatch(authenticateAction.login(id,password))
+        dispatch(login({ id, password }))
         navigate("/")
     }
 
